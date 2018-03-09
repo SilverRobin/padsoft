@@ -3,11 +3,15 @@
  */
 package Usuarios;
 
+import java.util.ArrayList;
+
+import Inmueble.Inmueble;
+
 /**
  * @author eps
  *
  */
-public class Ofertante extends usuario {
+public class Ofertante{
 
 	/**
 	 * @param nombre
@@ -16,9 +20,13 @@ public class Ofertante extends usuario {
 	 * @param rol
 	 * @param creditCard
 	 */
-	public Ofertante(String nombre, String correo, String password, String rol, String creditCard) {
-		super(nombre, correo, password, rol, creditCard);
-		// TODO Auto-generated constructor stub
+	
+	private ArrayList<Inmueble> inmuebles;
+	
+	
+	public Boolean addInmueble(Inmueble inmueble) {
+		return inmuebles.add(inmueble);
 	}
+	
 
 }

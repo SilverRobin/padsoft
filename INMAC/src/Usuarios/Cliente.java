@@ -7,11 +7,12 @@ package Usuarios;
  * @author Laura Ramirez
  *
  */
-public abstract class usuario {
+public class Cliente {
 	private String nombre;
 	private String correo;
 	private String password;
-	private String rol;
+	private Ofertante ofertante;
+	private Demandante demandante;
 	private String creditCard;
 	
 	/**
@@ -21,12 +22,16 @@ public abstract class usuario {
 	 * @param rol
 	 * @param creditCard
 	 */
-	public usuario(String nombre, String correo, String password, String rol, String creditCard) {
+	public Cliente(String nombre, String correo, String password, String creditCard) {
 		this.nombre = nombre;
 		this.correo = correo;
 		this.password = password;
-		this.rol = rol;
 		this.creditCard = creditCard;
+	}
+	
+	public Boolean comprobarTarjeta() {
+		//comprueba validez tarjeta
+		return true;
 	}
 
 	
