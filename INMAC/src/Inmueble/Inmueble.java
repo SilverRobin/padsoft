@@ -1,5 +1,6 @@
 package Inmueble;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,6 +14,13 @@ public class Inmueble {
 	private int id;
 	private List<Caracteristica> caracteristicas;
 	private Direccion direccion;
+	
+	public Inmueble(String nD, int nID, Direccion nDir) {
+		this.descripcion = nD;
+		this.id = nID;
+		this.caracteristicas = new ArrayList<>();
+		this.direccion = nDir;
+	}
 	
 	public int getId() {
 		return id;
