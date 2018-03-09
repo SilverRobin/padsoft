@@ -23,5 +23,16 @@ public class Direccion {
 		this.calle = calle;
 	}
 	
+	public String getCP() {
+		return codigoPostal;
+	}
+	
+	public String getLocalidad() {
+		return localidad;
+	}
+	
+	public String getCalle() {
+		return calle;
+	}
 	
 }
