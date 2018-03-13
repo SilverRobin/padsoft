@@ -4,7 +4,7 @@
 package Inmueble;
 
 /**
- * @author eps
+ * @author Antonio Oliva
  *
  */
 public class Caracteristica {
@@ -32,5 +32,32 @@ public class Caracteristica {
 	public void setDesc(String nD) {
 		descripcion = nD;
 		return;
+	}
+	
+	public static Caracteristica generarTestCara1() {
+		return new Caracteristica("Test1", "Desc1");
+	}
+	
+	public static Caracteristica generarTestCara2() {
+		return new Caracteristica("Test1", "Desc2");
+	}
+	
+	public boolean isCaracteristica() {
+		return this instanceof Caracteristica;
+	}
+	
+	@Override
+	public boolean equals(Object e) {
+		
+		if(!(e instanceof Caracteristica))
+			return false;
+		
+		Caracteristica c = (Caracteristica) e;
+		
+		if(!(c.descripcion.equals(this.descripcion))
+				|| !(c.titulo.equals(this.titulo)))
+			return false;
+		
+		return true;
 	}
 }

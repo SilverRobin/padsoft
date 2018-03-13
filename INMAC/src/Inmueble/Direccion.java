@@ -35,4 +35,31 @@ public class Direccion {
 		return calle;
 	}
 	
+	public static Direccion generarTestDir1() {
+		return new Direccion("28040", "Madrid", "Fermines 13");
+	}
+	
+	public static Direccion generarTestDir2() {
+		return new Direccion("03700", "Denia", "Andrés Ponte 24");
+	}
+	
+	public boolean isDireccion() {
+		return this instanceof Direccion;
+	}
+	
+	@Override
+	public boolean equals (Object e) {
+		
+		if(!(e instanceof Direccion))
+			return false;
+		
+		Direccion d = (Direccion) e;
+		
+		if(!(d.calle.equals(this.calle))
+				|| !(d.codigoPostal.equals(this.codigoPostal))
+				|| !(d.localidad.equals(this.localidad)))
+			return false;
+		
+		return true;
+	}
 }

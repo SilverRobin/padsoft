@@ -5,19 +5,22 @@ import java.util.List;
 
 /**
  * 
- * @author eps
+ * @author Antonio Oliva
  *
  */
 public class Inmueble {
+	
+	private static int GLOBAL_ID = 0;
 
 	private String descripcion;
 	private int id;
 	private List<Caracteristica> caracteristicas;
 	private Direccion direccion;
 	
-	public Inmueble(String nD, int nID, Direccion nDir) {
+	public Inmueble(String nD, Direccion nDir) {
 		this.descripcion = nD;
-		this.id = nID;
+		this.id = GLOBAL_ID+1;
+		GLOBAL_ID++;
 		this.caracteristicas = new ArrayList<>();
 		this.direccion = nDir;
 	}
@@ -51,6 +54,10 @@ public class Inmueble {
 	public void deleteCaracteristica(Caracteristica nC) {
 		caracteristicas.remove(nC);
 		return;
+	}
+	
+	public boolean isInmueble() {
+		return this instanceof Inmueble;
 	}
 	
 }
