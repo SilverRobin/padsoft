@@ -2,6 +2,11 @@
  * 
  */
 package Usuarios;
+import java.util.ArrayList;
+import java.util.Date;
+
+import Sistema.Aviso;
+import es.uam.eps.padsof.telecard.*;
 
 /**
  * @author Laura Ramirez
@@ -14,6 +19,7 @@ public class Cliente {
 	private Ofertante ofertante;
 	private Demandante demandante;
 	private String creditCard;
+	private ArrayList<Aviso> avisos;
 	
 	/**
 	 * @param nombre
@@ -27,12 +33,56 @@ public class Cliente {
 		this.correo = correo;
 		this.password = password;
 		this.creditCard = creditCard;
+		avisos = new ArrayList<Aviso>();
 	}
 	
-	public Boolean comprobarTarjeta() {
-		//comprueba validez tarjeta
-		return true;
+	public Boolean comprobarTarjeta() {	
+		return TeleChargeAndPaySystem.isValidCardNumber(creditCard);
 	}
+	
+	public void ingresar(Double cantidad, String subject) {
+		int cont = 0;
+		int maxIntentos = 4;
+		
+		while(true) {
+			try {
+				TeleChargeAndPaySystem.charge(creditCard, subject, cantidad);
+			} catch(FailedInternetConnectionException e){
+				cont++;
+				if(cont == maxIntentos) {
+					addAviso("Fallo de conexión. Inténtalo más tarde");
+					break;
+				}
+			} catch (InvalidCardNumberException e) {
+				addAviso("Tarjeta inválida. Contacta con el administrador");
+				break;
+			}
+		}
+	}
+	
+	/**
+	 * Añade un aviso con un mensaje y la fecha en la que se genera
+	 * @param mensaje contenido del aviso
+	 */
+	public void addAviso(String mensaje) {
+		Aviso aviso = new Aviso(mensaje, new Date());
+		avisos.add(aviso);
+	}
+
+	public ArrayList<Aviso> getAvisos() {
+		return avisos;
+	}
+	
+	public void leerAvisos() {
+		int i;
+		for (i=0;i<=avisos.size();i++) {
+			System.out.println(avisos.get(i)); //Get o print?
+		}
+		avisos.clear(); //Limpiamos array porque ya se han leido todos
+	}
+	
+	
+
 
 	
 
