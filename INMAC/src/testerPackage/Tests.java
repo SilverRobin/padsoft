@@ -8,7 +8,8 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({
 	CaracteristicaTest.class,
 	DireccionTest.class,
-	InmuebleTest.class
+	InmuebleTest.class,
+	FechaSimuladaTest.class
 })
 
 /**

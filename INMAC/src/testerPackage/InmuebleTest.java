@@ -8,6 +8,12 @@ import Inmueble.Caracteristica;
 import Inmueble.Direccion;
 import Inmueble.Inmueble;
 
+/**
+ * Clase que comprueba el funcionamiento de la clase Inmueble
+ * 
+ * @author Antonio Oliva 
+ *
+ */
 public class InmuebleTest {
 
 	Inmueble i1;
