@@ -2,6 +2,8 @@ package Oferta;
 
 import java.util.Date;
 
+import Usuarios.*;
+
 /**
  * 
  * @author Antonio Oliva
@@ -12,11 +14,13 @@ public abstract class Oferta {
 	private int precio;
 	private int fianza;
 	private Date fechaInicio;
+	private EstadoOferta visibilidad;
 	
 	public Oferta (int nP, int nF, Date nD) {
 		this.precio = nP;
 		this.fianza = nF;
 		this.fechaInicio = nD;
+		visibilidad = EstadoOferta.NO_APROBADA;
 	}
 	
 	public int getPrecio() {
@@ -46,7 +50,7 @@ public abstract class Oferta {
 	}
 	
 	public void aprobarOferta() {
-		
+		this.visibilidad = EstadoOferta.DISPONIBLE;
 	}
 	
 	public double calcularMediaValoraciones() {
@@ -54,6 +58,14 @@ public abstract class Oferta {
 	}
 	
 	public void modificarOferta() {
+		if(visibilidad != EstadoOferta.NO_APROBADA) {
+			return;
+		}
+		//Modificar fecha y precio?
+	}
+	
+	public Boolean reservar(Demandante usr) {
+		return null;
 		
 	}
 }

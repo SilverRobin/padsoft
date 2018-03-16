@@ -40,7 +40,7 @@ public class Cliente {
 		return TeleChargeAndPaySystem.isValidCardNumber(creditCard);
 	}
 	
-	public void ingresar(Double cantidad, String subject) {
+	public void realizarPago(Double cantidad, String subject) {
 		int cont = 0;
 		int maxIntentos = 4;
 		
@@ -55,6 +55,9 @@ public class Cliente {
 				}
 			} catch (InvalidCardNumberException e) {
 				addAviso("Tarjeta inválida. Contacta con el administrador");
+				break;
+			} catch (OrderRejectedException e) {
+				addAviso("Transaccion rechazada");
 				break;
 			}
 		}
@@ -79,6 +82,10 @@ public class Cliente {
 			System.out.println(avisos.get(i)); //Get o print?
 		}
 		avisos.clear(); //Limpiamos array porque ya se han leido todos
+	}
+	
+	public void cambiarTarjeta(String tarjeta) {
+		this.creditCard = tarjeta;
 	}
 	
 	
