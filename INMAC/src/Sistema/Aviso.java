@@ -1,14 +1,16 @@
 package Sistema;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
+/**
+ * 
+ * @author Laura Ramírez
+ *
+ */
 public class Aviso {
 	private String texto;
-	private Date fecha;
+	private FechaSimulada fecha;
 	
 	
-	public Aviso(String texto, Date fecha) {
+	public Aviso(String texto, FechaSimulada fecha) {
 		this.texto = texto;
 		this.fecha = fecha;
 	}
@@ -17,14 +19,13 @@ public class Aviso {
 		return texto;
 	}
 	
-	public Date getFecha() {
+	public FechaSimulada getFecha() {
 		return fecha;
 	}
 	
 	@Override
 	public String toString() {
-		SimpleDateFormat ft = new SimpleDateFormat("E dd/MM/yyyy");
-		return texto + ". Enviado el " + ft.format(fecha);
+		return texto + ". Enviado el " + fecha.getHoy();
 		
 	}
 	

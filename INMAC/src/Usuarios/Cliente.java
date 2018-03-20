@@ -88,7 +88,10 @@ public class Cliente {
 		this.creditCard = tarjeta;
 	}
 	
-	
+	public static Cliente generarClienteTest() {
+		return new Cliente("Ernesto Leal", "ernesto@gmail.com",
+				"alpaca", "723548726");
+	}
 
 
 	
