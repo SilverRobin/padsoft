@@ -21,8 +21,14 @@ public class Demandante extends Cliente{
 	}
 	
 	public Boolean limiteAlcanzado() {
-		return null;
-		//Ver si se ha llegado al limite maximo de ofertas reservadas
+		if(reservas.size()!=2) {
+			return false;
+		}else if(reservas.get(0).isLargaEstancia() && reservas.get(1).isLargaEstancia()) {
+			return false;
+		}else if(!reservas.get(0).isLargaEstancia() && !reservas.get(1).isLargaEstancia()) {
+			return false;
+		}
+		return true;
 	}
 
 

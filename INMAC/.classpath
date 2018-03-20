@@ -9,5 +9,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="C:/Users/eps/Downloads/TeleChargeAndPaySystem.jar"/>
 	<classpathentry kind="lib" path="C:/Users/eps/Downloads/TeleChargeAndPaySystem-API.zip"/>
+	<classpathentry kind="lib" path="C:/Users/eps/git/padsoft/INMAC/TeleChargeAndPaySystem.jar"/>
+	<classpathentry kind="lib" path="C:/Users/eps/git/padsoft/INMAC/TeleChargeAndPaySystem-API.zip"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

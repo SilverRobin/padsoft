@@ -1,7 +1,10 @@
 package Oferta;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
+import Sistema.FechaSimulada;
 import Usuarios.*;
 
 /**
@@ -13,10 +16,11 @@ public abstract class Oferta {
 	
 	private int precio;
 	private int fianza;
-	private Date fechaInicio;
+	private FechaSimulada fechaInicio;
 	private EstadoOferta visibilidad;
+	private ArrayList<Valoracion> valoraciones;
 	
-	public Oferta (int nP, int nF, Date nD) {
+	public Oferta (int nP, int nF, FechaSimulada nD) {
 		this.precio = nP;
 		this.fianza = nF;
 		this.fechaInicio = nD;
@@ -26,13 +30,19 @@ public abstract class Oferta {
 	public int getPrecio() {
 		return precio;
 	}
+	public EstadoOferta getVisibilidad() {
+		return visibilidad;
+	}
 	
 	public int getFianza() {
 		return fianza;
 	}
 	
-	public Date getInicio() {
+	public FechaSimulada getInicio() {
 		return fechaInicio;
+	}
+	public void setInicio(FechaSimulada fecha) {
+		this.fechaInicio = fecha;
 	}
 	
 	public void setPrecio(int nP) {
@@ -54,15 +64,11 @@ public abstract class Oferta {
 	}
 	
 	public double calcularMediaValoraciones() {
+		//TODO hacer esto
 		return 0;
 	}
 	
-	public void modificarOferta() {
-		if(visibilidad != EstadoOferta.NO_APROBADA) {
-			return;
-		}
-		//Modificar fecha y precio?
-	}
+	public abstract Boolean modificarOferta(String dato, int precio, FechaSimulada fecha);
 	
 	public Boolean reservar(Demandante usr) {
 		return null;
