@@ -40,6 +40,10 @@ public class FechaSimulada {
 		return;
 	}
 	
+	public void retrasarDias(int dias) {
+		fecha = fecha.minusDays(dias);
+	}
+	
 	/**
 	 * Actualiza el valor de fecha
 	 * al dia de hoy
@@ -47,6 +51,12 @@ public class FechaSimulada {
 	public void reestablecerHoy(){
 		fecha = LocalDate.now();
 		return;
+	}
+	
+	public boolean hanPasado5dias() {
+		if(LocalDate.now().isEqual(fecha.plusDays(5)) || LocalDate.now().isAfter(fecha.plusDays(5))) //Vemos si esa fecha es de hace 5 dias o mas
+			return true;
+		return false;
 	}
 	
 }

@@ -1,11 +1,8 @@
 package Oferta;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-
 import Sistema.FechaSimulada;
-import Usuarios.*;
+import Valorables.Valoracion;
 
 /**
  * 
@@ -64,14 +61,23 @@ public abstract class Oferta {
 	}
 	
 	public double calcularMediaValoraciones() {
-		//TODO hacer esto
-		return 0;
+		int i, suma = 0;
+		for(i=0; i<valoraciones.size(); i++) {
+			suma += valoraciones.get(i).getValor();
+		}
+		return suma/valoraciones.size();
 	}
 	
-	public abstract Boolean modificarOferta(String dato, int precio, FechaSimulada fecha);
+	public abstract boolean modificarOferta(String dato, int precio, FechaSimulada fecha);
 	
-	public Boolean reservar(Demandante usr) {
-		return null;
+	public void reservar() {
+		visibilidad = EstadoOferta.RESERVADA;
 		
+	}
+	public void contratar() {
+		visibilidad = EstadoOferta.CONTRATADA;
+	}
+	public void cancelar() {
+		visibilidad = EstadoOferta.DISPONIBLE;
 	}
 }

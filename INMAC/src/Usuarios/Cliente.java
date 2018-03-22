@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import Sistema.Aviso;
+import Sistema.FechaSimulada;
 import es.uam.eps.padsof.telecard.*;
 
 /**
@@ -40,27 +41,8 @@ public class Cliente {
 		return TeleChargeAndPaySystem.isValidCardNumber(creditCard);
 	}
 	
-	public void realizarPago(Double cantidad, String subject) {
-		int cont = 0;
-		int maxIntentos = 4;
-		
-		while(true) {
-			try {
-				TeleChargeAndPaySystem.charge(creditCard, subject, cantidad);
-			} catch(FailedInternetConnectionException e){
-				cont++;
-				if(cont == maxIntentos) {
-					addAviso("Fallo de conexión. Inténtalo más tarde");
-					break;
-				}
-			} catch (InvalidCardNumberException e) {
-				addAviso("Tarjeta inválida. Contacta con el administrador");
-				break;
-			} catch (OrderRejectedException e) {
-				addAviso("Transaccion rechazada");
-				break;
-			}
-		}
+	public String getCreditCard() {
+		return creditCard;
 	}
 	
 	/**
@@ -68,7 +50,7 @@ public class Cliente {
 	 * @param mensaje contenido del aviso
 	 */
 	public void addAviso(String mensaje) {
-		Aviso aviso = new Aviso(mensaje, new Date());
+		Aviso aviso = new Aviso(mensaje, new FechaSimulada());
 		avisos.add(aviso);
 	}
 

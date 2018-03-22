@@ -3,6 +3,8 @@ package Inmueble;
 import java.util.ArrayList;
 import java.util.List;
 
+import Oferta.Oferta;
+
 /**
  * 
  * @author Antonio Oliva
@@ -16,6 +18,7 @@ public class Inmueble {
 	private int id;
 	private List<Caracteristica> caracteristicas;
 	private Direccion direccion;
+	private ArrayList<Oferta> ofertas;
 	
 	public Inmueble(String nD, Direccion nDir) {
 		this.descripcion = nD;
@@ -23,12 +26,17 @@ public class Inmueble {
 		GLOBAL_ID++;
 		this.caracteristicas = new ArrayList<>();
 		this.direccion = nDir;
+		this.ofertas = new ArrayList<Oferta>();
 	}
 	
 	public int getId() {
 		return id;
 	}
 	
+	public ArrayList<Oferta> getOfertas() {
+		return ofertas;
+	}
+
 	public String getDesc() {
 		return descripcion;
 	}
@@ -58,6 +66,10 @@ public class Inmueble {
 	
 	public boolean isInmueble() {
 		return this instanceof Inmueble;
+	}
+	
+	public boolean addOferta(Oferta e) {
+		return ofertas.add(e);
 	}
 	
 }

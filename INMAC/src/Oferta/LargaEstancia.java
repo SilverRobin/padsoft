@@ -25,7 +25,7 @@ public class LargaEstancia extends Oferta {
 	 * @see Oferta.Oferta#modificarOferta(java.lang.String, int, Sistema.FechaSimulada)
 	 */
 	@Override
-	public Boolean modificarOferta(String dato, int precio, FechaSimulada fecha) {
+	public boolean modificarOferta(String dato, int precio, FechaSimulada fecha) {
 		if(this.getVisibilidad() != EstadoOferta.A_MODIFICAR) {
 			return false;
 		}

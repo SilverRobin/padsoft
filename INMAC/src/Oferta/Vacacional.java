@@ -24,7 +24,7 @@ public class Vacacional extends Oferta {
 		this.fechaFin = fechaFin;
 	}
 	@Override
-	public Boolean modificarOferta(String dato, int precio, FechaSimulada fecha) {
+	public boolean modificarOferta(String dato, int precio, FechaSimulada fecha) {
 		if(this.getVisibilidad() != EstadoOferta.A_MODIFICAR) {
 			return false;
 		}
