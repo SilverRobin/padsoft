@@ -80,4 +80,7 @@ public abstract class Oferta {
 	public void cancelar() {
 		visibilidad = EstadoOferta.DISPONIBLE;
 	}
+	public void rectificar() {
+		visibilidad = EstadoOferta.A_MODIFICAR;
+	}
 }

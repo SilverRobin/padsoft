@@ -60,8 +60,8 @@ public class Cliente {
 	
 	public void leerAvisos() {
 		int i;
-		for (i=0;i<=avisos.size();i++) {
-			System.out.println(avisos.get(i)); //Get o print?
+		for (i=0;i<avisos.size();i++) {
+			System.out.println(avisos.get(i));
 		}
 		avisos.clear(); //Limpiamos array porque ya se han leido todos
 	}

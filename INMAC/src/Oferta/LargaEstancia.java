@@ -33,7 +33,7 @@ public class LargaEstancia extends Oferta {
 		case "fechainicio":
 			this.setInicio(fecha);
 			break;
-		case "minimaEstancia":
+		case "minimaestancia":
 			this.setMinimaEstancia(precio);
 			break;
 		case "fianza":
