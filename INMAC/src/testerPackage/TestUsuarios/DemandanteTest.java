@@ -1,7 +1,7 @@
 /**
  * 
  */
-package testerPackage;
+package testerPackage.TestUsuarios;
 
 import static org.junit.Assert.*;
 
@@ -19,7 +19,6 @@ import Usuarios.Demandante;
 public class DemandanteTest {
 	
 	private Demandante d;
-	private Demandante error;
 	private Vacacional v, v2;
 	private LargaEstancia le, le2;
 	private Reserva r1, r2, r3, r4;

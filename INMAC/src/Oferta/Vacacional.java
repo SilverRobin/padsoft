@@ -14,15 +14,20 @@ import Sistema.*;
 public class Vacacional extends Oferta {
 	
 	private FechaSimulada fechaFin;
+
 	/**
-	 * @param nP
-	 * @param nF
-	 * @param nD
+	 * @param nP Precio
+	 * @param nF Fianza
+	 * @param nD Fecha de inicio
+	 * @param fechaFin Fecha de fin
 	 */
 	public Vacacional(int nP, int nF, FechaSimulada nD, FechaSimulada fechaFin) {
 		super(nP, nF, nD);
 		this.fechaFin = fechaFin;
 	}
+	/* (non-Javadoc)
+	 * @see Oferta.Oferta#modificarOferta(java.lang.String, int, Sistema.FechaSimulada)
+	 */
 	@Override
 	public boolean modificarOferta(String dato, int precio, FechaSimulada fecha) {
 		if(this.getVisibilidad() != EstadoOferta.A_MODIFICAR) {
@@ -47,10 +52,18 @@ public class Vacacional extends Oferta {
 		return true;
 		
 	}
+	/**
+	 * Establece la fecha de fin
+	 * @param fecha nueva fecha de fin
+	 */
 	public void setFin(FechaSimulada fecha) {
 		this.fechaFin = fecha;
 		
 	}
+	/**
+	 * Obtiene la fecha de fin
+	 * @return la fecha de fin
+	 */
 	public FechaSimulada getFin() {
 		return fechaFin;
 	}

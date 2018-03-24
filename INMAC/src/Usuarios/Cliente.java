@@ -23,11 +23,10 @@ public class Cliente {
 	private ArrayList<Aviso> avisos;
 	
 	/**
-	 * @param nombre
-	 * @param correo
-	 * @param password
-	 * @param rol
-	 * @param creditCard
+	 * @param nombre nombre
+	 * @param correo correo
+	 * @param password contraseña
+	 * @param creditCard tarjeta de credito
 	 */
 	public Cliente(String nombre, String correo, String password, String creditCard) {
 		this.nombre = nombre;
@@ -37,10 +36,18 @@ public class Cliente {
 		avisos = new ArrayList<Aviso>();
 	}
 	
-	public Boolean comprobarTarjeta() {	
+	/**
+	 * Comprueba la validez de la tarjeta de credito
+	 * @return true si la tarjeta es valida o false en caso contrario
+	 */
+	public boolean comprobarTarjeta() {	
 		return TeleChargeAndPaySystem.isValidCardNumber(creditCard);
 	}
 	
+	/**
+	 * Obtiene la tarjeta
+	 * @return la tarjeta de credito
+	 */
 	public String getCreditCard() {
 		return creditCard;
 	}
@@ -54,10 +61,17 @@ public class Cliente {
 		avisos.add(aviso);
 	}
 
+	/**
+	 * Obtiene la lista de avisos
+	 * @return lista de avisos
+	 */
 	public ArrayList<Aviso> getAvisos() {
 		return avisos;
 	}
 	
+	/**
+	 * Lee los avisos guardados
+	 */
 	public void leerAvisos() {
 		int i;
 		for (i=0;i<avisos.size();i++) {
@@ -66,10 +80,18 @@ public class Cliente {
 		avisos.clear(); //Limpiamos array porque ya se han leido todos
 	}
 	
+	/**
+	 * Cambia el numero de tarjeta
+	 * @param tarjeta nueva tarjeta
+	 */
 	public void cambiarTarjeta(String tarjeta) {
 		this.creditCard = tarjeta;
 	}
 	
+	/**
+	 * Genera un cliente de prueba
+	 * @return cliente generado
+	 */
 	public static Cliente generarClienteTest() {
 		return new Cliente("Ernesto Leal", "ernesto@gmail.com",
 				"alpaca", "723548726");

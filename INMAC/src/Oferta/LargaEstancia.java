@@ -12,9 +12,10 @@ import Sistema.FechaSimulada;
 public class LargaEstancia extends Oferta {
 	private int minimaEstancia; 
 	/**
-	 * @param nP
-	 * @param nF
-	 * @param nD
+	 * @param nP Precio
+	 * @param nF Fianza
+	 * @param nD Fecha de inicio
+	 * @param minimaEstancia meses de estancia
 	 */
 	public LargaEstancia(int nP, int nF, FechaSimulada nD, int minimaEstancia) {
 		super(nP, nF, nD);
@@ -49,10 +50,18 @@ public class LargaEstancia extends Oferta {
 
 	}
 
+	/**
+	 * Obtiene los meses de estancia
+	 * @return los meses de estancia
+	 */
 	public int getMinimaEstancia() {
 		return minimaEstancia;
 	}
 
+	/**
+	 * Cambia los meses de estancia
+	 * @param minimaEstancia meses minimos de estancia
+	 */
 	public void setMinimaEstancia(int minimaEstancia) {
 		this.minimaEstancia = minimaEstancia;
 	}

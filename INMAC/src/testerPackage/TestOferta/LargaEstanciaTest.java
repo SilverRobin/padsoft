@@ -1,13 +1,14 @@
 /**
  * 
  */
-package testerPackage;
+package testerPackage.TestOferta;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import Oferta.EstadoOferta;
 import Oferta.LargaEstancia;
 import Sistema.FechaSimulada;
 
@@ -19,7 +20,7 @@ public class LargaEstanciaTest {
 	
 	private LargaEstancia l;
 	/**
-	 * @throws java.lang.Exception
+	 * @throws java.lang.Exception Excepcion
 	 */
 	@Before
 	public void setUp() throws Exception {
@@ -44,30 +45,9 @@ public class LargaEstanciaTest {
 		assertEquals(150, l.getFianza());
 		assertTrue(l.modificarOferta("precio", 400, null));
 		assertEquals(400, l.getPrecio());
+		l.aprobarOferta();
+		assertEquals(EstadoOferta.DISPONIBLE, l.getVisibilidad());
+		l.reservar();
+		assertEquals(EstadoOferta.RESERVADA, l.getVisibilidad());
 	}
-
-	/**
-	 * Test method for {@link Oferta.LargaEstancia#LargaEstancia(int, int, Sistema.FechaSimulada, int)}.
-	 
-	@Test
-	public void testLargaEstancia() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link Oferta.LargaEstancia#getMinimaEstancia()}.
-
-	@Test
-	public void testGetMinimaEstancia() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link Oferta.LargaEstancia#setMinimaEstancia(int)}.
-	
-	@Test
-	public void testSetMinimaEstancia() {
-		fail("Not yet implemented");
-	}*/
-
 }

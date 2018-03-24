@@ -13,9 +13,9 @@ public class Direccion {
 	private String calle;
 	
 	/**
-	 * @param codigoPostal
-	 * @param localidad
-	 * @param calle
+	 * @param codigoPostal codigo postal
+	 * @param localidad localidad
+	 * @param calle calle
 	 */
 	public Direccion(String codigoPostal, String localidad, String calle) {
 		this.codigoPostal = codigoPostal;

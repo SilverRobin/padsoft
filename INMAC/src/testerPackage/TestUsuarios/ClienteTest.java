@@ -1,15 +1,13 @@
 /**
  * 
  */
-package testerPackage;
+package testerPackage.TestUsuarios;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import Sistema.Aviso;
-import Sistema.FechaSimulada;
 import Usuarios.Cliente;
 
 /**

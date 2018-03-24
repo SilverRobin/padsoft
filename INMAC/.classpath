@@ -2,8 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/eps/git/padsoft/INMAC/TeleChargeAndPaySystem.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/eps/git/padsoft/INMAC/TeleChargeAndPaySystem-API.zip"/>
+	<classpathentry kind="lib" path="TeleChargeAndPaySystem-API.zip"/>
+	<classpathentry kind="lib" path="TeleChargeAndPaySystem.jar"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="module" value="true"/>
