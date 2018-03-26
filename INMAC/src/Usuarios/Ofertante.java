@@ -3,6 +3,7 @@
  */
 package Usuarios;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import es.uam.eps.padsof.telecard.*;
 import Inmueble.Inmueble;
@@ -11,8 +12,12 @@ import Inmueble.Inmueble;
  * @author eps
  *
  */
-public class Ofertante extends Cliente{
+public class Ofertante extends Cliente implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Inmueble> inmuebles;
 
 	/**

@@ -15,6 +15,10 @@ import Usuarios.Cliente;
  */
 public class Comentario extends ElementoValorable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String texto;
 	private List<ElementoValorable> valorables;
 	

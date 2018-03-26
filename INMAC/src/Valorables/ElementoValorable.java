@@ -1,5 +1,7 @@
 package Valorables;
 
+import java.io.Serializable;
+
 import Usuarios.Cliente;
 
 /**
@@ -9,8 +11,12 @@ import Usuarios.Cliente;
  * @author Antonio Oliva
  *
  */
-public abstract class ElementoValorable {
+public abstract class ElementoValorable implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Cliente autor;
 	
 	public ElementoValorable(Cliente nC) {

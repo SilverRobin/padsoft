@@ -3,6 +3,7 @@
  */
 package Oferta;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import Sistema.FechaSimulada;
@@ -12,7 +13,11 @@ import Usuarios.Demandante;
  * @author Laura Ramirez
  *
  */
-public class Reserva {
+public class Reserva implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private FechaSimulada fecha;
 	private Oferta oferta;
 	

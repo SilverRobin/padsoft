@@ -1,11 +1,17 @@
 package Sistema;
 
+import java.io.Serializable;
+
 /**
  * 
  * @author Laura Ramírez
  *
  */
-public class Aviso {
+public class Aviso implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String texto;
 	private FechaSimulada fecha;
 	

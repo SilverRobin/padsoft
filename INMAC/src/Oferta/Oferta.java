@@ -1,5 +1,6 @@
 package Oferta;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import Sistema.FechaSimulada;
 import Valorables.Valoracion;
@@ -9,8 +10,12 @@ import Valorables.Valoracion;
  * @author Antonio Oliva
  *
  */
-public abstract class Oferta {
+public abstract class Oferta implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int precio;
 	private int fianza;
 	private FechaSimulada fechaInicio;

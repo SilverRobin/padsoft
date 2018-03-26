@@ -17,6 +17,10 @@ import es.uam.eps.padsof.telecard.TeleChargeAndPaySystem;
  */
 public class Demandante extends Cliente{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Reserva> reservas;
 
 	/**

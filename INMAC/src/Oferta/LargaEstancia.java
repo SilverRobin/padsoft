@@ -10,6 +10,10 @@ import Sistema.FechaSimulada;
  *
  */
 public class LargaEstancia extends Oferta {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int minimaEstancia; 
 	/**
 	 * @param nP Precio

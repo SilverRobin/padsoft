@@ -13,6 +13,10 @@ import Sistema.*;
  */
 public class Vacacional extends Oferta {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private FechaSimulada fechaFin;
 
 	/**

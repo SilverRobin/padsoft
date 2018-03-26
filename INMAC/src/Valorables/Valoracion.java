@@ -11,6 +11,10 @@ import Usuarios.Cliente;
  */
 public class Valoracion extends ElementoValorable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private double valor;
 	
 	public Valoracion(double nV, Cliente nC) {

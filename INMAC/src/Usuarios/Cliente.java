@@ -2,9 +2,8 @@
  * 
  */
 package Usuarios;
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
-
 import Sistema.Aviso;
 import Sistema.FechaSimulada;
 import es.uam.eps.padsof.telecard.*;
@@ -13,7 +12,11 @@ import es.uam.eps.padsof.telecard.*;
  * @author Laura Ramirez
  *
  */
-public class Cliente {
+public class Cliente implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nombre;
 	private String correo;
 	private String password;
@@ -42,6 +45,10 @@ public class Cliente {
 	 */
 	public boolean comprobarTarjeta() {	
 		return TeleChargeAndPaySystem.isValidCardNumber(creditCard);
+	}
+	
+	public String getCorreo() {
+		return correo;
 	}
 	
 	/**
