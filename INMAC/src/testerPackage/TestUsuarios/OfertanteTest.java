@@ -23,8 +23,8 @@ public class OfertanteTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		o = new Ofertante("Fulano", "fulano@gmail.com", "sopadefideos", "0000111122223333");
-		o2 = new Ofertante("Fulano2", "fulano2@gmail.com", "sopadefideos", "a");
+		o = new Ofertante("Fulano", "05325211L", "sopadefideos", "0000111122223333");
+		o2 = new Ofertante("Fulano2", "0532548L", "sopadefideos", "a");
 		i = new Inmueble("Soleado, muy grande", Direccion.generarTestDir2());
 		
 	}

@@ -77,7 +77,7 @@ public class Cliente implements Serializable{
 		return TeleChargeAndPaySystem.isValidCardNumber(creditCard);
 	}
 	
-	public String getCorreo() {
+	public String getNIF() {
 		return correo;
 	}
 	

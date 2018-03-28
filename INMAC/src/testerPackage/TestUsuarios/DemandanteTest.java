@@ -28,7 +28,7 @@ public class DemandanteTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		d = new Demandante("Fulano", "fulano@gmail.com", "sopadefideos", "0000111122223333");
+		d = new Demandante("Fulano", "1234567899P", "sopadefideos", "0000111122223333");
 		v = new Vacacional(200, 50, new FechaSimulada(), new FechaSimulada());
 		v.getFin().avanzarDias(7);
 		v2 = new Vacacional(100, 50, new FechaSimulada(), new FechaSimulada());

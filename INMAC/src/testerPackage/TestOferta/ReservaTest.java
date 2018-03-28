@@ -24,7 +24,7 @@ public class ReservaTest {
 	public void setUp() throws Exception {
 		l = new LargaEstancia(200, 100, new FechaSimulada(), 2);
 		r = new Reserva(l);
-		d = new Demandante("Fulano", "fulano@gmail.com", "sopadefideos", "0000111122223333");
+		d = new Demandante("Fulano", "00000000U", "sopadefideos", "0000111122223333");
 	}
 
 	@Test

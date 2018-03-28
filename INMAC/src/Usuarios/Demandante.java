@@ -29,8 +29,8 @@ public class Demandante extends Cliente{
 	 * @param password contraseña del demandante
 	 * @param creditCard tarjeta de credito
 	 */
-	public Demandante(String nombre, String correo, String password, String creditCard) {
-		super(nombre, correo, password, creditCard);
+	public Demandante(String nombre, String NIF, String password, String creditCard) {
+		super(nombre, NIF, password, creditCard);
 		reservas = new ArrayList<Reserva>();
 	}
 	

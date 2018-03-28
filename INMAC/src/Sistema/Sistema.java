@@ -1,14 +1,17 @@
 package Sistema;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import Inmueble.*;
 import Usuarios.*;
@@ -38,20 +41,90 @@ public class Sistema implements Serializable{
 	}
 	
 	/**
-	 * Busca un cliente por correo
-	 * @param email correo del cliente
+	 * Busca un cliente por nif
+	 * @param nif  del cliente
 	 * @return Cliente
 	 */
-	public Cliente buscarCliente(String email) {
-		if(email == null) {
+	public Cliente buscarCliente(String nif) {
+		if(nif == null) {
 			return null;
 		}
 		for(Cliente c : this.clientes) {
-			if(c.getCorreo().equals(email))
+			if(c.getNIF().equalsIgnoreCase(nif))
 				return c;
 		}
 			return null;
 		
+	}
+	
+	public boolean addNuevoCliente(Cliente c) {
+		if(c == null) {
+			return false;
+		}
+		if(this.clientes.contains(c)) {
+			return false;
+		}
+		for(Cliente p : this.clientes) {
+			if(c.getNIF().equalsIgnoreCase(p.getNIF())) {
+				return false;
+			}
+		}
+		 return this.clientes.add(c);
+	}
+	
+	public boolean leerCliente(String linea) {
+		String rol, NIF, name, pass, ccn;
+		
+		Scanner l;
+		
+		l = new Scanner(linea);
+		
+		l.useDelimiter("\\n");
+		rol = l.next();
+		
+		String[] aux = rol.split("\\;");
+		rol = aux[0];
+		NIF = aux[1];
+		name =aux[2];
+		pass = aux[3];
+		ccn = aux[4];
+		
+		l.close();
+		
+		switch (rol) {
+		case "O":
+			return addNuevoCliente(new Ofertante (name, NIF, pass, ccn));
+		case "D":
+			return addNuevoCliente (new Demandante(name, NIF, pass, ccn));
+		case "OD":
+			return addNuevoCliente(new Ofertante (name, NIF, pass, ccn)) &&
+					addNuevoCliente (new Demandante(name, NIF, pass, ccn));
+			
+		default:
+			return false;
+		}
+		
+		
+	}
+	
+	public boolean leerFichero(String fichero) throws IOException {
+		String datos;
+		
+		if(fichero==null) {
+			return false;
+		}
+		FileReader file = new FileReader(fichero);
+		BufferedReader buffer = new BufferedReader(file);
+		
+		while((datos = buffer.readLine()) != null) {
+			leerCliente(datos);
+			
+		}
+		
+		if(buffer != null) {
+			buffer.close();
+		}
+		return true;
 	}
 	
 	/**
@@ -63,10 +136,10 @@ public class Sistema implements Serializable{
 		String barras = File.separator;
 		if (c instanceof Demandante) {
 			path += barras + "Datos" + barras + "Clientes" + barras + "Demandantes"
-					+ c.getCorreo() + barras;
+					+ c.getNIF() + barras;
 		}else if (c instanceof Ofertante){
 			path += barras + "Datos" + barras + "Clientes" + barras + "Ofertantes"
-					+ c.getCorreo() + barras;
+					+ c.getNIF() + barras;
 		}else {
 			return;
 		}
@@ -98,6 +171,15 @@ public class Sistema implements Serializable{
 		}
 		
 		
+	}
+	
+	/**
+	 * Recupera los clientes del archivo y los carga en el sistema
+	 * @throws ClassNotFoundException Excepcion
+	 * @throws IOException Excepcion
+	 */
+	public void recuperarClientes() throws ClassNotFoundException, IOException {
+		this.clientes.addAll(cargarClientes());
 	}
 	
 	/**

@@ -20,7 +20,7 @@ public class ClienteTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		c = new Cliente("Fulano", "deTal@gmail.com", "sopadefideos", "0000111122223333");
+		c = new Cliente("Fulano", "00000000D", "sopadefideos", "0000111122223333");
 	}
 
 	@Test

@@ -26,8 +26,8 @@ public class Ofertante extends Cliente implements Serializable{
 	 * @param password contraseña del ofertante
 	 * @param creditCard tarjeta de credito del ofertante
 	 */
-	public Ofertante(String nombre, String correo, String password, String creditCard) {
-		super(nombre, correo, password, creditCard);
+	public Ofertante(String nombre, String NIF, String password, String creditCard) {
+		super(nombre, NIF, password, creditCard);
 		// TODO Auto-generated constructor stub
 		inmuebles = new ArrayList<Inmueble>();
 	}
