@@ -9,6 +9,12 @@ import Oferta.*;
 import Sistema.FechaSimulada;
 import Usuarios.Demandante;
 
+/**
+ * Clase que comprueba el correcto funcionamiento de la clase Reserva
+ * 
+ * @author Laura Ramirez
+ *
+ */
 public class ReservaTest {
 	private Reserva r;
 	private LargaEstancia l;

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package testerPackage.TestUsuarios;
 
 import static org.junit.Assert.*;
@@ -11,7 +8,9 @@ import org.junit.Test;
 import Usuarios.Cliente;
 
 /**
- * @author eps
+ * Clase que comprueba el correcto funcionamiento de la clase Cliente
+ * 
+ * @author Laura Ramirez
  *
  */
 public class ClienteTest {

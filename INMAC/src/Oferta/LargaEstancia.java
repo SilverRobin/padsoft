@@ -6,7 +6,7 @@ package Oferta;
 import Sistema.FechaSimulada;
 
 /**
- * @author eps
+ * @author Laura Ramirez
  *
  */
 public class LargaEstancia extends Oferta {

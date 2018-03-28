@@ -4,12 +4,21 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
+import testerPackage.TestOferta.*;
+import testerPackage.TestUsuarios.*;
+
 @RunWith(Suite.class)
 @SuiteClasses({
 	CaracteristicaTest.class,
 	DireccionTest.class,
 	InmuebleTest.class,
-	FechaSimuladaTest.class
+	FechaSimuladaTest.class,
+	LargaEstanciaTest.class,
+	VacacionalTest.class,
+	ReservaTest.class,
+	ClienteTest.class,
+	DemandanteTest.class,
+	OfertanteTest.class
 })
 
 /**

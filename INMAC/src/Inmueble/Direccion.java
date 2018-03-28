@@ -1,10 +1,7 @@
-/**
- * 
- */
 package Inmueble;
 
 /**
- * @author eps
+ * @author Antonio Oliva
  *
  */
 public class Direccion {

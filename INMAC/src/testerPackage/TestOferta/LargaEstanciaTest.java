@@ -13,7 +13,9 @@ import Oferta.LargaEstancia;
 import Sistema.FechaSimulada;
 
 /**
- * @author eps
+ * Clase que comprueba el correcto funcionamiento de la clase LargaEstancia
+ * 
+ * @author Laura Ramirez
  *
  */
 public class LargaEstanciaTest {

@@ -1,7 +1,5 @@
-/**
- * 
- */
 package Usuarios;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import Sistema.Aviso;
@@ -13,9 +11,8 @@ import es.uam.eps.padsof.telecard.*;
  *
  */
 public class Cliente implements Serializable{
-	/**
-	 * 
-	 */
+	
+	
 	private static final long serialVersionUID = 1L;
 	private String nombre;
 	private String correo;
@@ -37,6 +34,39 @@ public class Cliente implements Serializable{
 		this.password = password;
 		this.creditCard = creditCard;
 		avisos = new ArrayList<Aviso>();
+	}
+	
+	/**
+	 * Devuelve el nombre del Cliente
+	 * 
+	 * @return Nombre del cliente
+	 */
+	public String getNombre() {
+		return nombre;
+	}
+	
+	/**
+	 * Devuelve la contrasenia del cliente
+	 * @return Contrasenia del cliente
+	 */
+	public String getPassword() {
+		return password;
+	}
+	
+	/**
+	 * Devuelve el posible demandante del cliente
+	 * @return Perfil demandante
+	 */
+	public Demandante getDemandante() {
+		return demandante;
+	}
+	
+	/**
+	 * Devuelve el posible ofertante del cliente
+	 * @return Perfil ofertante
+	 */
+	public Ofertante getOfertante() {
+		return ofertante;
 	}
 	
 	/**

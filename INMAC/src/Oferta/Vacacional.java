@@ -8,7 +8,9 @@ package Oferta;
 import Sistema.*;
 
 /**
- * @author eps
+ * Clase que comprueba el correcto funcionamiento de la clase Vacacional
+ * 
+ * @author Laura Ramirez
  *
  */
 public class Vacacional extends Oferta {

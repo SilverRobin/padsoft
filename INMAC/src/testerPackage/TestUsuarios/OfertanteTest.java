@@ -1,6 +1,3 @@
-/**
- * 
- */
 package testerPackage.TestUsuarios;
 
 import static org.junit.Assert.*;
@@ -13,7 +10,9 @@ import Inmueble.Inmueble;
 import Usuarios.Ofertante;
 
 /**
- * @author laura
+ * Clase que comprueba el correcto funcionamiento de la clase Ofertante
+ * 
+ * @author Laura Ramirez
  *
  */
 public class OfertanteTest {

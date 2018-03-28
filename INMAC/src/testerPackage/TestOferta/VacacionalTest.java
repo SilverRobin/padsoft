@@ -13,7 +13,7 @@ import Oferta.Vacacional;
 import Sistema.FechaSimulada;
 
 /**
- * @author laura
+ * @author Laura Ramirez
  *
  */
 public class VacacionalTest {
