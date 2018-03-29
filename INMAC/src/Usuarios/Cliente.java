@@ -130,7 +130,7 @@ public class Cliente implements Serializable{
 	 * @return cliente generado
 	 */
 	public static Cliente generarClienteTest() {
-		return new Cliente("Ernesto Leal", "ernesto@gmail.com",
+		return new Cliente("Ernesto Leal", "01256477p",
 				"alpaca", "723548726");
 	}
 
