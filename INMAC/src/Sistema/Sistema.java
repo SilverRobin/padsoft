@@ -40,6 +40,10 @@ public class Sistema implements Serializable{
 		logeado = null;
 	}
 	
+	public ArrayList<Cliente> getClientes(){
+		return clientes;
+	}
+	
 	/**
 	 * Busca un cliente por nif
 	 * @param nif  del cliente
@@ -57,6 +61,11 @@ public class Sistema implements Serializable{
 		
 	}
 	
+	/**
+	 * Introduce un nuevo cliente en el array de clientes, comprobando antes si existe
+	 * @param c Cliente
+	 * @return true o false
+	 */
 	public boolean addNuevoCliente(Cliente c) {
 		if(c == null) {
 			return false;
@@ -98,8 +107,7 @@ public class Sistema implements Serializable{
 			return addNuevoCliente (new Demandante(name, NIF, pass, ccn));
 		case "OD":
 			return addNuevoCliente(new Ofertante (name, NIF, pass, ccn)) &&
-					addNuevoCliente (new Demandante(name, NIF, pass, ccn));
-			
+					addNuevoCliente (new Demandante(name, NIF, pass, ccn));	
 		default:
 			return false;
 		}
@@ -135,10 +143,10 @@ public class Sistema implements Serializable{
 		String path = System.getProperty("user.dir");
 		String barras = File.separator;
 		if (c instanceof Demandante) {
-			path += barras + "Datos" + barras + "Clientes" + barras + "Demandantes"
+			path += barras + "Datos" + barras + "Clientes" + barras + "Demandantes" + barras
 					+ c.getNIF() + barras;
 		}else if (c instanceof Ofertante){
-			path += barras + "Datos" + barras + "Clientes" + barras + "Ofertantes"
+			path += barras + "Datos" + barras + "Clientes" + barras + "Ofertantes" + barras
 					+ c.getNIF() + barras;
 		}else {
 			return;
@@ -174,12 +182,17 @@ public class Sistema implements Serializable{
 	}
 	
 	/**
-	 * Recupera los clientes del archivo y los carga en el sistema
+	 * Recupera los clientes del archivo y los carga en el sistema junto con los inmuebles
 	 * @throws ClassNotFoundException Excepcion
 	 * @throws IOException Excepcion
 	 */
 	public void recuperarClientes() throws ClassNotFoundException, IOException {
 		this.clientes.addAll(cargarClientes());
+		for(Cliente c : this.clientes) {
+			if(c instanceof Ofertante && (((Ofertante) c).getInmuebles().isEmpty() == false)) {
+				this.inmuebles.addAll(((Ofertante)c).getInmuebles());
+			}
+		}
 	}
 	
 	/**
@@ -198,7 +211,7 @@ public class Sistema implements Serializable{
 		ObjectInputStream ois = null;
 		
 		//Directorio de clientes
-		directorio  += barras + "Datos" + barras + "Clientes" + barras + "Ofertantes";
+		directorio  += barras + "Datos" + barras + "Clientes" + barras + "Ofertantes"+barras;
 		
 		File dirOfertantes = new File(directorio);
 		
@@ -220,9 +233,9 @@ public class Sistema implements Serializable{
 				}
 			}
 		}
-		
+		directorio = path;
 		//Directorio de Demandantes
-		directorio  += barras + "Datos" + barras + "Clientes" + barras + "Demandantes";
+		directorio  += barras + "Datos" + barras + "Clientes" + barras + "Demandantes"+barras;
 		
 		File dirDemandantes = new File(directorio);
 		
