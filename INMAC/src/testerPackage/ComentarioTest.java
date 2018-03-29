@@ -17,11 +17,13 @@ public class ComentarioTest {
 
 	private Comentario c1;
 	private Comentario c2;
+	private Cliente autor;
 	
 	@Before
 	public void setup() {
-		c1 = new Comentario("buena vivienda", Cliente.generarClienteTest());
-		c2 = new Comentario("mediocre vivienda", Cliente.generarClienteTest());
+		autor = Cliente.generarClienteTest();
+		c1 = new Comentario("buena vivienda", autor);
+		c2 = new Comentario("mediocre vivienda", autor);
 	}
 	
 	@Test
@@ -30,7 +32,7 @@ public class ComentarioTest {
 		c1.setTexto("mala vivienda");;
 		Assert.assertNotEquals("Error en setValor()", c1.getTexto(), "buena vivienda");
 		
-		Assert.assertEquals("Error en getAutor()", c1.getAutor(), Cliente.generarClienteTest());
+		Assert.assertEquals("Error en getAutor()", c1.getAutor(), autor);
 		c1.setAutor(null);
 		Assert.assertNull("Error en setAutor()", c1.getAutor());
 		

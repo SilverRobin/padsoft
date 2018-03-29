@@ -16,10 +16,13 @@ import Valorables.Valoracion;
 public class ValoracionTest {
 
 	private Valoracion v1;
+	private Cliente autor;
 	
 	@Before
 	public void setup() {
-		v1 = new Valoracion(6, Cliente.generarClienteTest());
+		autor = Cliente.generarClienteTest();
+		v1 = new Valoracion(6, autor);
+		
 	}
 	
 	@Test
@@ -28,7 +31,7 @@ public class ValoracionTest {
 		v1.setValor(3);
 		Assert.assertEquals("Error en setValor()", v1.getValor(), 3, 0.1);
 		
-		Assert.assertEquals("Error en getAutor()", v1.getAutor(), Cliente.generarClienteTest());
+		Assert.assertEquals("Error en getAutor()", v1.getAutor(), autor);
 		v1.setAutor(null);
 		Assert.assertNull("Error en setAutor()", v1.getAutor());
 	}
