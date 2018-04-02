@@ -20,14 +20,26 @@ public class Direccion {
 		this.calle = calle;
 	}
 	
+	/**
+	 * Obtiene el codigo postal
+	 * @return CP
+	 */
 	public String getCP() {
 		return codigoPostal;
 	}
 	
+	/**
+	 * Obtiene la localidad
+	 * @return localidad
+	 */
 	public String getLocalidad() {
 		return localidad;
 	}
 	
+	/**
+	 * Obtiene la calle
+	 * @return calle
+	 */
 	public String getCalle() {
 		return calle;
 	}
@@ -40,6 +52,10 @@ public class Direccion {
 		return new Direccion("03700", "Denia", "Andrés Ponte 24");
 	}
 	
+	/**
+	 * Comprueba que es una direccion
+	 * @return direccion
+	 */
 	public boolean isDireccion() {
 		return this instanceof Direccion;
 	}

@@ -24,7 +24,7 @@ public class DemandanteTest {
 	private FechaSimulada fecha;
 
 	/**
-	 * @throws java.lang.Exception
+	 * @throws java.lang.Exception excepcion
 	 */
 	@Before
 	public void setUp() throws Exception {

@@ -20,7 +20,7 @@ public class VacacionalTest {
 	private Vacacional v;
 
 	/**
-	 * @throws java.lang.Exception
+	 * @throws java.lang.Exception excepcion
 	 */
 	@Before
 	public void setUp() throws Exception {

@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"Usuarios"}]
+packageSearchIndex = [{"l":"Inmueble"},{"l":"Oferta"},{"l":"Sistema"},{"l":"testerPackage"},{"l":"testerPackage.TestOferta"},{"l":"testerPackage.TestUsuarios"},{"l":"Usuarios"},{"l":"Valorables"}]

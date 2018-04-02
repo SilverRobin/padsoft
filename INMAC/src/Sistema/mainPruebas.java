@@ -15,7 +15,7 @@ import Usuarios.Cliente;
 public class mainPruebas {
 
 	/**
-	 * @param args
+	 * @param args argumentos
 	 */
 	public static void main(String[] args) {
 		Sistema apli = new Sistema("admin", "admin");

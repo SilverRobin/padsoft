@@ -3,6 +3,7 @@
  */
 package Usuarios;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import Oferta.Reserva;
@@ -11,16 +12,15 @@ import Oferta.Reserva;
  * @author Laura Ramirez
  *
  */
-public class Demandante{
+public class Demandante implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Reserva> reservas;
 
-	/**
-	 * @param nombre nombre del demandante
-	 * @param correo correo del demandante
-	 * @param password contraseña del demandante
-	 * @param creditCard tarjeta de credito
-	 */
+	
 	public Demandante() {
 		reservas = new ArrayList<Reserva>();
 	}

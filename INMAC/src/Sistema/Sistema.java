@@ -34,6 +34,10 @@ public class Sistema implements Serializable{
 	
 	public Sistema singleton;
 	
+	/**
+	 * @param id id del admin	
+	 * @param pass pass del admin
+	 */
 	protected Sistema(String id, String pass) {
 		gerID = id;
 		gerPass = pass;
@@ -43,6 +47,10 @@ public class Sistema implements Serializable{
 		tipolog = TipoCliente.NULL;
 	}
 	
+	/**
+	 * Obtiene la lista de clientes
+	 * @return clientes
+	 */
 	public ArrayList<Cliente> getClientes(){
 		return clientes;
 	}
@@ -102,7 +110,7 @@ public class Sistema implements Serializable{
 	
 	
 	/**
-	 * 
+	 * Logout del sistema
 	 */
 	public void logOut() {
 		logeado = null;
@@ -147,6 +155,11 @@ public class Sistema implements Serializable{
 		 return this.clientes.add(c);
 	}
 	
+	/**
+	 * Lectura de la linea de fichero de clientes
+	 * @param linea a leer
+	 * @return true o false
+	 */
 	public boolean leerCliente(String linea) {
 		String rol, NIF, name, pass, ccn;
 		
@@ -186,6 +199,12 @@ public class Sistema implements Serializable{
 		return this.addNuevoCliente(c);		
 	}
 	
+	/**
+	 * Lectura del fichero de clientes
+	 * @param fichero de clientes
+	 * @return true o false
+	 * @throws IOException excepcion de entrada salida
+	 */
 	public boolean leerFichero(String fichero) throws IOException {
 		String datos;
 		
@@ -213,15 +232,8 @@ public class Sistema implements Serializable{
 	public void guardarCliente(Cliente c) {
 		String path = System.getProperty("user.dir");
 		String barras = File.separator;
-		if (c instanceof Demandante) {
-			path += barras + "Datos" + barras + "Clientes" + barras + "Demandantes" + barras
-					+ c.getNIF() + barras;
-		}else if (c instanceof Ofertante){
-			path += barras + "Datos" + barras + "Clientes" + barras + "Ofertantes" + barras
-					+ c.getNIF() + barras;
-		}else {
-			return;
-		}
+		path += barras + "Datos" + barras + "Clientes" + barras
+				+ c.getNIF() + barras;
 		File folder = new File(path);
 		if(!folder.exists()) {
 			folder.mkdirs();
@@ -260,8 +272,8 @@ public class Sistema implements Serializable{
 	public void recuperarClientes() throws ClassNotFoundException, IOException {
 		this.clientes.addAll(cargarClientes());
 		for(Cliente c : this.clientes) {
-			if(c instanceof Ofertante && (((Ofertante) c).getInmuebles().isEmpty() == false)) {
-				this.inmuebles.addAll(((Ofertante)c).getInmuebles());
+			if(c.getOfertante() != null && c.getOfertante().getInmuebles().isEmpty() == false) {
+				this.inmuebles.addAll(c.getOfertante().getInmuebles());
 			}
 		}
 	}
@@ -282,7 +294,7 @@ public class Sistema implements Serializable{
 		ObjectInputStream ois = null;
 		
 		//Directorio de clientes
-		directorio  += barras + "Datos" + barras + "Clientes" + barras + "Ofertantes"+barras;
+		directorio  += barras + "Datos" + barras + "Clientes" + barras;
 		
 		File dirOfertantes = new File(directorio);
 		
@@ -298,31 +310,7 @@ public class Sistema implements Serializable{
 				for(File obj : ficheros) {
 					fichero = new FileInputStream(obj);
 					ois = new ObjectInputStream(fichero);
-					objeto = (Ofertante) ois.readObject();
-					ois.close();
-					aux.add(objeto);
-				}
-			}
-		}
-		directorio = path;
-		//Directorio de Demandantes
-		directorio  += barras + "Datos" + barras + "Clientes" + barras + "Demandantes"+barras;
-		
-		File dirDemandantes = new File(directorio);
-		
-		if(dirDemandantes.exists()) {
-			File[] verCarpetas = dirDemandantes.listFiles();
-			
-			for(int x = 0; x < verCarpetas.length; x++) {
-				String direccion = directorio;
-				direccion += verCarpetas[x].getName();
-				File carpe = new File(direccion);
-				File[] ficheros = carpe.listFiles();
-				
-				for(File obj : ficheros) {
-					fichero = new FileInputStream(obj);
-					ois = new ObjectInputStream(fichero);
-					objeto = (Demandante) ois.readObject();
+					objeto = (Cliente) ois.readObject();
 					ois.close();
 					aux.add(objeto);
 				}

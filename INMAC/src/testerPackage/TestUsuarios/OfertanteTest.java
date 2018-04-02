@@ -19,7 +19,7 @@ public class OfertanteTest {
 	private Cliente c1, c2;
 	private Inmueble i;
 	/**
-	 * @throws java.lang.Exception
+	 * @throws java.lang.Exception excepcion
 	 */
 	@Before
 	public void setUp() throws Exception {

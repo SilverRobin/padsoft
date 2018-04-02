@@ -16,7 +16,7 @@ import Usuarios.Cliente;
 public class ClienteTest {
 	private Cliente c;
 	/**
-	 * @throws java.lang.Exception
+	 * @throws java.lang.Exception excepcion
 	 */
 	@Before
 	public void setUp() throws Exception {

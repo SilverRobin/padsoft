@@ -3,6 +3,7 @@
  */
 package Usuarios;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import Inmueble.Inmueble;
 
@@ -10,16 +11,15 @@ import Inmueble.Inmueble;
  * @author Laura Ramirez
  *
  */
-public class Ofertante{
+public class Ofertante implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Inmueble> inmuebles;
 
-	/**
-	 * @param nombre del ofertante
-	 * @param correo del ofertante
-	 * @param password contraseña del ofertante
-	 * @param creditCard tarjeta de credito del ofertante
-	 */
+
 	public Ofertante() {
 		// TODO Auto-generated constructor stub
 		inmuebles = new ArrayList<Inmueble>();

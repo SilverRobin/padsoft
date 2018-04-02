@@ -15,7 +15,7 @@ public class Cliente implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private String nombre;
-	private String correo;
+	private String nif;
 	private String password;
 	private Ofertante ofertante;
 	private Demandante demandante;
@@ -24,13 +24,13 @@ public class Cliente implements Serializable{
 	
 	/**
 	 * @param nombre nombre
-	 * @param correo correo
+	 * @param nif NIF
 	 * @param password contraseña
 	 * @param creditCard tarjeta de credito
 	 */
-	public Cliente(String nombre, String correo, String password, String creditCard) {
+	public Cliente(String nombre, String nif, String password, String creditCard) {
 		this.nombre = nombre;
-		this.correo = correo;
+		this.nif = nif;
 		this.password = password;
 		this.creditCard = creditCard;
 		avisos = new ArrayList<Aviso>();
@@ -78,7 +78,7 @@ public class Cliente implements Serializable{
 	}
 	
 	public String getNIF() {
-		return correo;
+		return nif;
 	}
 	
 	

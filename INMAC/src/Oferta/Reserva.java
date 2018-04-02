@@ -66,7 +66,7 @@ public class Reserva implements Serializable{
 		
 		/**
 		 * Hace el pago de una reserva
-		 * @param d Demandante que realiza el pago
+		 * @param c Demandante que realiza el pago
 		 * @return true o false
 		 */
 		public boolean pagarReserva(Cliente c) {
