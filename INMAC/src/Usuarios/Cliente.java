@@ -81,6 +81,17 @@ public class Cliente implements Serializable{
 		return correo;
 	}
 	
+	
+	public void addDemandante() {
+		demandante = new Demandante();
+		return;
+	}
+	
+	public void addOfertante() {
+		ofertante = new Ofertante();
+		return;
+	}
+	
 	/**
 	 * Obtiene la tarjeta
 	 * @return la tarjeta de credito
@@ -132,6 +143,31 @@ public class Cliente implements Serializable{
 	public static Cliente generarClienteTest() {
 		return new Cliente("Ernesto Leal", "01256477p",
 				"alpaca", "723548726");
+	}
+	
+	public boolean realizarPago(Double cantidad, String subject) {
+		int cont = 0;
+		int maxIntentos = 4;
+		
+		while(true) {
+			try {
+				TeleChargeAndPaySystem.charge(creditCard, subject, cantidad);
+				return true;
+			} catch(FailedInternetConnectionException e){
+				cont++;
+				if(cont == maxIntentos) {
+					addAviso("Fallo de conexión. Inténtalo más tarde");
+					break;
+				}
+			} catch (InvalidCardNumberException e) {
+				addAviso("Tarjeta inválida. Contacta con el administrador");
+				break;
+			} catch (OrderRejectedException e) {
+				addAviso("Transaccion rechazada");
+				break;
+			}
+		}
+		return false;
 	}
 
 

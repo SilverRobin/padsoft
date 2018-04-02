@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import Oferta.*;
 import Sistema.FechaSimulada;
-import Usuarios.Demandante;
+import Usuarios.Cliente;
 
 /**
  * Clase que comprueba el correcto funcionamiento de la clase Demandante
@@ -17,7 +17,7 @@ import Usuarios.Demandante;
  */
 public class DemandanteTest {
 	
-	private Demandante d;
+	private Cliente c;
 	private Vacacional v, v2;
 	private LargaEstancia le, le2;
 	private Reserva r1, r2, r3, r4;
@@ -28,7 +28,8 @@ public class DemandanteTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		d = new Demandante("Fulano", "1234567899P", "sopadefideos", "0000111122223333");
+		c = new Cliente("Fulano", "1234567899P", "sopadefideos", "0000111122223333");
+		c.addDemandante();
 		v = new Vacacional(200, 50, new FechaSimulada(), new FechaSimulada());
 		v.getFin().avanzarDias(7);
 		v2 = new Vacacional(100, 50, new FechaSimulada(), new FechaSimulada());
@@ -46,34 +47,31 @@ public class DemandanteTest {
 
 	@Test
 	public void testGet() {
-		assertEquals("0000111122223333", d.getCreditCard());
-		assertTrue(d.getReservas().isEmpty());
+		assertEquals("0000111122223333", c.getCreditCard());
+		assertTrue(c.getDemandante().getReservas().isEmpty());
 		assertTrue(fecha.hanPasado5dias());
 
 	}
 	
 	@Test
 	public void testReserva() {
-		assertTrue(d.addReserva(r1));
-		assertTrue(d.addReserva(r2));
-		assertTrue(d.limiteAlcanzado());
-		assertFalse(d.addReserva(r3));
-		assertFalse(d.comprobarReserva(r4));
-		assertTrue(d.comprobarReserva(r1));
-		d.eliminarReserva(r1); //Eliminamos una reserva
-		assertEquals(1, d.getReservas().size()); //Ahora solo hay una (r2)
-		assertFalse(d.addReserva(r4)); //No podemos reservar otra de larga estancia
-		assertTrue(d.getReservas().get(0).pagarReserva(d)); //Contratamos r2
+		assertTrue(c.getDemandante().addReserva(r1));
+		assertTrue(c.getDemandante().addReserva(r2));
+		assertTrue(c.getDemandante().limiteAlcanzado());
+		assertFalse(c.getDemandante().addReserva(r3));
+		assertFalse(c.getDemandante().comprobarReserva(r4));
+		assertTrue(c.getDemandante().comprobarReserva(r1));
+		c.getDemandante().eliminarReserva(r1); //Eliminamos una reserva
+		assertEquals(1, c.getDemandante().getReservas().size()); //Ahora solo hay una (r2)
+		assertFalse(c.getDemandante().addReserva(r4)); //No podemos reservar otra de larga estancia
+		assertTrue(c.getDemandante().getReservas().get(0).pagarReserva(c)); //Contratamos r2
 		assertEquals(EstadoOferta.CONTRATADA, r2.getOferta().getVisibilidad()); //La oferta esta pagada
-		d.addReserva(r3); //Añadimos la reserva vacacional caducada
-		assertEquals(2, d.getReservas().size());//Ahora hay dos reservas
-		d.eliminarReservaCaducada(); //Eliminamos reserva caducada
-		assertEquals(1, d.getReservas().size());//Ahora solo hay una
-		d.eliminarReserva(r2);
-		assertTrue(d.getReservas().isEmpty());
-		
-
-		
+		c.getDemandante().addReserva(r3); //Añadimos la reserva vacacional caducada
+		assertEquals(2, c.getDemandante().getReservas().size());//Ahora hay dos reservas
+		c.getDemandante().eliminarReservaCaducada(); //Eliminamos reserva caducada
+		assertEquals(1, c.getDemandante().getReservas().size());//Ahora solo hay una
+		c.getDemandante().eliminarReserva(r2);
+		assertTrue(c.getDemandante().getReservas().isEmpty());
 		
 	}
 

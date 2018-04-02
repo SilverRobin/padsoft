@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import Oferta.*;
 import Sistema.FechaSimulada;
-import Usuarios.Demandante;
+import Usuarios.Cliente;
 
 /**
  * Clase que comprueba el correcto funcionamiento de la clase Reserva
@@ -18,13 +18,14 @@ import Usuarios.Demandante;
 public class ReservaTest {
 	private Reserva r;
 	private LargaEstancia l;
-	private Demandante d;
+	private Cliente c;
 
 	@Before
 	public void setUp() throws Exception {
 		l = new LargaEstancia(200, 100, new FechaSimulada(), 2);
 		r = new Reserva(l);
-		d = new Demandante("Fulano", "00000000U", "sopadefideos", "0000111122223333");
+		c = new Cliente("Fulano", "00000000U", "sopadefideos", "0000111122223333");
+		c.addDemandante();
 	}
 
 	@Test
@@ -52,12 +53,12 @@ public class ReservaTest {
 
 	@Test
 	public void testPagarReserva() {
-		assertFalse(r.pagarReserva(d));
+		assertFalse(r.pagarReserva(c));
 	}
 
 	@Test
 	public void testCancelarReserva() {
-		assertFalse(r.cancelarReserva(d));
+		assertFalse(r.cancelarReserva(c.getDemandante()));
 	}
 
 }

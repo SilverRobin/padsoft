@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import Inmueble.Direccion;
 import Inmueble.Inmueble;
-import Usuarios.Ofertante;
+import Usuarios.Cliente;
 
 /**
  * Clase que comprueba el correcto funcionamiento de la clase Ofertante
@@ -16,27 +16,29 @@ import Usuarios.Ofertante;
  *
  */
 public class OfertanteTest {
-	private Ofertante o, o2;
+	private Cliente c1, c2;
 	private Inmueble i;
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
-		o = new Ofertante("Fulano", "05325211L", "sopadefideos", "0000111122223333");
-		o2 = new Ofertante("Fulano2", "0532548L", "sopadefideos", "a");
+		c1 = new Cliente("Fulano", "05325211L", "sopadefideos", "0000111122223333");
+		c2 = new Cliente("Fulano2", "0532548L", "sopadefideos", "a");
+		c1.addOfertante();
+		c2.addOfertante();
 		i = new Inmueble("Soleado, muy grande", Direccion.generarTestDir2());
 		
 	}
 
 	@Test
 	public void test() {
-		assertTrue(o.getInmuebles().isEmpty());
-		assertTrue(o.addInmueble(i));
-		assertTrue(o.recibirCobro((double) 200, "cobro reserva"));
-		assertFalse(o2.recibirCobro((double) 200, "cobro")); //Error por tarjeta invalida
-		assertFalse(o.recibirCobro((double) 200, "w")); //Error por conexion fallida y genera aviso
-		assertFalse(o.getAvisos().isEmpty()); //Tenemos un aviso
+		assertTrue(c1.getOfertante().getInmuebles().isEmpty());
+		assertTrue(c1.getOfertante().addInmueble(i));
+		assertTrue(c1.realizarPago((double) 200, "cobro reserva"));
+		assertFalse(c2.realizarPago((double) 200, "cobro")); //Error por tarjeta invalida
+		assertFalse(c1.realizarPago((double) 200, "w")); //Error por conexion fallida y genera aviso
+		assertFalse(c1.getAvisos().isEmpty()); //Tenemos un aviso
 		
 	}
 

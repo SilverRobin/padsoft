@@ -6,21 +6,13 @@ package Usuarios;
 import java.util.ArrayList;
 
 import Oferta.Reserva;
-import es.uam.eps.padsof.telecard.FailedInternetConnectionException;
-import es.uam.eps.padsof.telecard.InvalidCardNumberException;
-import es.uam.eps.padsof.telecard.OrderRejectedException;
-import es.uam.eps.padsof.telecard.TeleChargeAndPaySystem;
 
 /**
  * @author Laura Ramirez
  *
  */
-public class Demandante extends Cliente{
+public class Demandante{
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private ArrayList<Reserva> reservas;
 
 	/**
@@ -29,40 +21,8 @@ public class Demandante extends Cliente{
 	 * @param password contraseña del demandante
 	 * @param creditCard tarjeta de credito
 	 */
-	public Demandante(String nombre, String NIF, String password, String creditCard) {
-		super(nombre, NIF, password, creditCard);
+	public Demandante() {
 		reservas = new ArrayList<Reserva>();
-	}
-	
-	/** Realiza un pago
-	 * @param cantidad a pagar
-	 * @param subject texto
-	 * @return true o false
-	 */
-	public boolean realizarPago(Double cantidad, String subject) {
-		int cont = 0;
-		int maxIntentos = 4;
-		cantidad *= -1;
-		
-		while(true) {
-			try {
-				TeleChargeAndPaySystem.charge(this.getCreditCard(), subject, cantidad);
-				return true;
-			} catch(FailedInternetConnectionException e){
-				cont++;
-				if(cont == maxIntentos) {
-					addAviso("Fallo de conexión. Inténtalo más tarde");
-					break;
-				}
-			} catch (InvalidCardNumberException e) {
-				addAviso("Tarjeta inválida. Contacta con el administrador");
-				break;
-			} catch (OrderRejectedException e) {
-				addAviso("Transaccion rechazada");
-				break;
-			}
-		}
-		return false;
 	}
 	
 	/**

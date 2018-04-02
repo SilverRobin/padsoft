@@ -18,13 +18,15 @@ import Usuarios.*;
 
 public class Sistema implements Serializable{
 	
+	protected enum TipoCliente{
+		NULL, OFERTANTE, DEMANDANTE
+	}
+	
 	private ArrayList<Cliente> clientes;
 	private ArrayList<Inmueble> inmuebles;
 	private Cliente logeado;
+	private TipoCliente tipolog;
 
-	/**
-	 * 
-	 */
 	
 	private static final long serialVersionUID = 1L;
 	protected static String gerPass;
@@ -38,10 +40,74 @@ public class Sistema implements Serializable{
 		clientes = new ArrayList<Cliente>();
 		inmuebles = new ArrayList<Inmueble>();
 		logeado = null;
+		tipolog = TipoCliente.NULL;
 	}
 	
 	public ArrayList<Cliente> getClientes(){
 		return clientes;
+	}
+	
+	
+	/**
+	 * Devuelve el Cliente que ha iniciado sesion
+	 * en la aplicacion
+	 * 
+	 * @return Cliente cuya sesion esta abierta
+	 */
+	public Cliente getLogged() {
+		return logeado;
+	}
+	
+	
+	/**
+	 * Devuelve el tipo de cliente
+	 * (demandante u ofertante) que
+	 * ha iniciado sesion en la aplicacion
+	 * 
+	 * @return Tipo de Cliente de la sesion
+	 */
+	protected TipoCliente getTipoLogged() {
+		return tipolog;
+	}
+	
+	
+	/**
+	 * Inicia sesion dados unos
+	 * parametros introducidos
+	 * por el cliente
+	 * 
+	 * @param nif Numero de identificacion del cliente
+	 * @param pass Contrasenia del cliente
+	 * @param tipo Tipo de cliente
+	 * @return true si se inicia sesion con exito, false si no
+	 */
+	
+	public boolean logIn(String nif, String pass, TipoCliente tipo) {
+		
+		for(Cliente c : clientes) {
+			if(c.getNIF().equals(nif)) {
+				if(c.getPassword().equals(pass) &&
+						((tipo == TipoCliente.DEMANDANTE && c.getDemandante() != null) ||
+								(tipo == TipoCliente.OFERTANTE && c.getOfertante() != null))) {
+					logeado = c;
+					tipolog = tipo;
+					return true;
+				}
+			}else {
+				return false;
+			}
+		}
+		return false;
+	}
+	
+	
+	/**
+	 * 
+	 */
+	public void logOut() {
+		logeado = null;
+		tipolog = TipoCliente.NULL;
+		return;
 	}
 	
 	/**
@@ -100,19 +166,24 @@ public class Sistema implements Serializable{
 		
 		l.close();
 		
+		Cliente c = new Cliente(name, NIF, pass, ccn);
+		
 		switch (rol) {
-		case "O":
-			return addNuevoCliente(new Ofertante (name, NIF, pass, ccn));
-		case "D":
-			return addNuevoCliente (new Demandante(name, NIF, pass, ccn));
-		case "OD":
-			return addNuevoCliente(new Ofertante (name, NIF, pass, ccn)) &&
-					addNuevoCliente (new Demandante(name, NIF, pass, ccn));	
-		default:
-			return false;
+			case "O":
+				c.addOfertante();
+				break;
+			case "D":
+				c.addDemandante();
+				break;
+			case "OD":
+				c.addDemandante();
+				c.addOfertante();
+				break;
+			default:
+				return false;
 		}
 		
-		
+		return this.addNuevoCliente(c);		
 	}
 	
 	public boolean leerFichero(String fichero) throws IOException {

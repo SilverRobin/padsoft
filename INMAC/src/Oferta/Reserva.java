@@ -4,12 +4,16 @@
 package Oferta;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import Sistema.FechaSimulada;
+import Usuarios.Cliente;
 import Usuarios.Demandante;
 
 /**
+ * Clase que define el funcionamiento de los
+ * objetos de tipo Reserva, que almacenan
+ * una oferta y su fecha de reserva
+ * 
  * @author Laura Ramirez
  *
  */
@@ -65,12 +69,15 @@ public class Reserva implements Serializable{
 		 * @param d Demandante que realiza el pago
 		 * @return true o false
 		 */
-		public boolean pagarReserva(Demandante d) {
+		public boolean pagarReserva(Cliente c) {
+			
+			Demandante d = c.getDemandante();
+			
 			if(!d.comprobarReserva(this)) {
 				return false;
 			}
 			
-			if(!d.realizarPago((double) (oferta.getPrecio() + oferta.getFianza()), "Pago de reserva")) {
+			if(!c.realizarPago((double) (-1 * (oferta.getPrecio() + oferta.getFianza())), "Pago de reserva")) {
 				return false;
 			}
 			this.oferta.contratar();
