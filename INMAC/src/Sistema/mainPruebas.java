@@ -105,7 +105,11 @@ public class mainPruebas {
 		
 		apli.getLogged().getDemandante().addReserva(r1);
 		
+		System.out.println("Reserva realizada?: "+ apli.getLogged().getDemandante().getReservas().contains(r1));
 		
+		
+		
+		return;
 		
 		
 		

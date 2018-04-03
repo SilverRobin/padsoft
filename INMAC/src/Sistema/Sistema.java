@@ -132,9 +132,9 @@ public class Sistema implements Serializable{
 					logeado = c;
 					tipolog = tipo;
 					return true;
+				}else {
+					return false;
 				}
-			}else {
-				return false;
 			}
 		}
 		return false;
