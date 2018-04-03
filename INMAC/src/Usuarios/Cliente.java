@@ -136,15 +136,6 @@ public class Cliente implements Serializable{
 		this.creditCard = tarjeta;
 	}
 	
-	/**
-	 * Genera un cliente de prueba
-	 * @return cliente generado
-	 */
-	public static Cliente generarClienteTest() {
-		return new Cliente("Ernesto Leal", "01256477p",
-				"alpaca", "723548726");
-	}
-	
 	public boolean realizarPago(Double cantidad, String subject) {
 		int cont = 0;
 		int maxIntentos = 4;
@@ -171,8 +162,13 @@ public class Cliente implements Serializable{
 	}
 
 
-	
-
-	
+	/**
+	 * Genera un cliente de prueba
+	 * @return cliente generado
+	 */
+	public static Cliente generarClienteTest() {
+		return new Cliente("Ernesto Leal", "01256477p",
+				"alpaca", "723548726");
+	}	
 	
 }

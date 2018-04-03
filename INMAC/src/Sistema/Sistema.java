@@ -3,7 +3,6 @@ package Sistema;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -19,13 +18,14 @@ import Usuarios.*;
 public class Sistema implements Serializable{
 	
 	protected enum TipoCliente{
-		NULL, OFERTANTE, DEMANDANTE
+		NULL, OFERTANTE, DEMANDANTE, GERENTE
 	}
 	
 	private ArrayList<Cliente> clientes;
 	private ArrayList<Inmueble> inmuebles;
 	private Cliente logeado;
 	private TipoCliente tipolog;
+	private double cuentas;
 
 	
 	private static final long serialVersionUID = 1L;
@@ -91,6 +91,11 @@ public class Sistema implements Serializable{
 	 */
 	
 	public boolean logIn(String nif, String pass, TipoCliente tipo) {
+		
+		if(nif.equals(gerID) && pass.equals(gerPass)) {
+			tipolog = TipoCliente.GERENTE;
+			return true;
+		}
 		
 		for(Cliente c : clientes) {
 			if(c.getNIF().equals(nif)) {

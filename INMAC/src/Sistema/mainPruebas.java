@@ -3,7 +3,6 @@
  */
 package Sistema;
 
-import java.io.File;
 import java.io.IOException;
 
 import Usuarios.Cliente;
@@ -19,9 +18,6 @@ public class mainPruebas {
 	 */
 	public static void main(String[] args) {
 		Sistema apli = new Sistema("admin", "admin");
-		String barras = File.separator;
-		String path = System.getProperty("user.dir");
-		path += barras + "Datos" + barras;
 		Cliente dummy = Cliente.generarClienteTest();
 		
 		
@@ -44,17 +40,21 @@ public class mainPruebas {
 			e.printStackTrace();
 		}
 		
+		System.out.println("Ha fallado la carga de datos?");
 		System.out.println(apli.getClientes().isEmpty()); //En este momento esto deberia devolver false
 		
-		System.out.println("Iniciando sesion con cliente " + dummy.getNombre() + ".");
+		System.out.println("\nIniciando sesion con cliente " + dummy.getNombre() + ".");
 		dummy.addDemandante();
 		apli.addNuevoCliente(dummy);
 		apli.logIn(dummy.getNIF(), dummy.getPassword(), Sistema.TipoCliente.DEMANDANTE);
-		System.out.println("Sesion iniciada con exito: " + apli.getLogged() != null);
+		System.out.print("Sesion iniciada con exito: ");
+		System.out.println(apli.getLogged() != null);
 		
-		System.out.println("Cerrando sesion.");
+		System.out.println("\nCerrando sesion.");
 		apli.logOut();
-		System.out.println("Sesion cerrada con exito: " + apli.getLogged() == null);
+		System.out.print("Sesion cerrada con exito: ");
+		System.out.println(apli.getLogged() == null);
+		
 
 	}
 
