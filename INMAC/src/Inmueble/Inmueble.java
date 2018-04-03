@@ -114,6 +114,7 @@ public class Inmueble {
 	 * @return true o false
 	 */
 	public boolean addOferta(Oferta e) {
+		
 		return ofertas.add(e);
 	}
 	

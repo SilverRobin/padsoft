@@ -5,7 +5,14 @@ package Sistema;
 
 import java.io.IOException;
 
+import Inmueble.Caracteristica;
+import Inmueble.Direccion;
+import Inmueble.Inmueble;
+import Oferta.LargaEstancia;
+import Oferta.Oferta;
+import Oferta.Reserva;
 import Usuarios.Cliente;
+import Usuarios.Ofertante;
 
 /**
  * @author Laura Ramirez
@@ -19,6 +26,7 @@ public class mainPruebas {
 	public static void main(String[] args) {
 		Sistema apli = new Sistema("admin", "admin");
 		Cliente dummy = Cliente.generarClienteTest();
+		
 		
 		
 		try {
@@ -54,6 +62,54 @@ public class mainPruebas {
 		apli.logOut();
 		System.out.print("Sesion cerrada con exito: ");
 		System.out.println(apli.getLogged() == null);
+		
+		apli.logIn("51999111X", "pezEspada", Sistema.TipoCliente.OFERTANTE);
+		System.out.print("\nSesion iniciada con exito: ");
+		System.out.println(apli.getLogged() != null);
+		Inmueble i1;
+		System.out.println("Creando inmueble");
+		i1 = new Inmueble("Soleado en algun lado", Direccion.generarTestDir1());
+		apli.getInmuebles().add(i1);
+		i1.addCaracteristica(Caracteristica.generarTestCara1());
+		
+		apli.getLogged().getOfertante().addInmueble(i1);
+		
+		System.out.println("Creado inmueble llamado: " + i1.getDesc());
+		Oferta o = new LargaEstancia(200, 100, new FechaSimulada(), 2);
+		i1.addOferta(o);
+		System.out.println("Estado de la oferta: " + o.getVisibilidad());
+		System.out.println("\nCerrando sesion.");
+		apli.logOut();
+		
+		if(apli.logIn("admin", "admin", null) == false) {
+			System.out.println("Error en login");
+			return;
+		}
+		System.out.println("\nSesion iniciada con exito como admin");
+		
+		for(Oferta of : apli.getNoAprobadas()) {
+			of.aprobarOferta();
+			System.out.println("Estado de la oferta: " + o.getVisibilidad());
+		}
+		
+		System.out.println("Cerrando sesion como admin.");
+		apli.logOut();
+		
+		System.out.println("Iniciando sesion como demandante");
+		apli.logIn("55555111Z", "NoSeSaBe", Sistema.TipoCliente.DEMANDANTE);
+		
+		Oferta o1 = apli.getInmuebles().get(0).getOfertas().get(0);
+		Reserva r1 = new Reserva(o1);
+		
+		System.out.println("Reservando oferta de " + o1.getPrecio() + "€");
+		
+		apli.getLogged().getDemandante().addReserva(r1);
+		
+		
+		
+		
+		
+		
 		
 
 	}

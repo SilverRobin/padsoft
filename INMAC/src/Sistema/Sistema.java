@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Inmueble.*;
+import Oferta.EstadoOferta;
+import Oferta.Oferta;
 import Usuarios.*;
 
 public class Sistema implements Serializable{
@@ -55,6 +57,14 @@ public class Sistema implements Serializable{
 		return clientes;
 	}
 	
+	/**
+	 * Obtiene la lista de inmuebles
+	 * @return inmuebles
+	 */
+	public ArrayList<Inmueble> getInmuebles(){
+		return inmuebles;
+	}
+	
 	
 	/**
 	 * Devuelve el Cliente que ha iniciado sesion
@@ -64,6 +74,23 @@ public class Sistema implements Serializable{
 	 */
 	public Cliente getLogged() {
 		return logeado;
+	}
+	
+	/**
+	 * Obtiene la lista de ofertas no aprobadas
+	 * @return lista de ofertas no aprobadas
+	 */
+	public ArrayList<Oferta> getNoAprobadas(){
+		ArrayList<Oferta> ofertas = new ArrayList<Oferta>();
+		for(Inmueble i : this.inmuebles) {
+			for(Oferta o : i.getOfertas()) {
+				if(o.getVisibilidad() == EstadoOferta.NO_APROBADA) {
+					ofertas.add(o);
+				}
+			}
+		}
+		
+		return ofertas;
 	}
 	
 	
