@@ -12,7 +12,7 @@ import Usuarios.Cliente;
  */
 public class Pago {
 
-	protected enum EstadoPago {
+	public enum EstadoPago {
 		PORPAGAR, PAGADO, ERROR
 	}
 	
@@ -52,7 +52,7 @@ public class Pago {
 		switch(estado) {
 			case PORPAGAR:
 				if(!(demandante.realizarPago(-1 * cantidad, subject)))
-					return false;			
+					return false;
 			case ERROR:
 				if(!(ofertante.realizarPago((1-comision)*cantidad, subject))) {
 					estado = EstadoPago.ERROR;

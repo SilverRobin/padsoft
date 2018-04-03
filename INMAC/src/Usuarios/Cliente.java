@@ -168,7 +168,7 @@ public class Cliente implements Serializable{
 	 */
 	public static Cliente generarClienteTest() {
 		return new Cliente("Ernesto Leal", "01256477p",
-				"alpaca", "723548726");
-	}	
+				"alpaca", "0000111122223333");
+	}
 	
 }

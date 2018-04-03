@@ -13,6 +13,7 @@ import testerPackage.TestUsuarios.*;
 	DireccionTest.class,
 	InmuebleTest.class,
 	FechaSimuladaTest.class,
+	PagoTest.class,
 	LargaEstanciaTest.class,
 	VacacionalTest.class,
 	ReservaTest.class,
