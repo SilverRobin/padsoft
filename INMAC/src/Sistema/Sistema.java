@@ -13,8 +13,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Inmueble.*;
-import Oferta.EstadoOferta;
-import Oferta.Oferta;
+import Oferta.*;
 import Usuarios.*;
 
 public class Sistema implements Serializable{
@@ -77,6 +76,20 @@ public class Sistema implements Serializable{
 	}
 	
 	/**
+	 * Obtiene la lista de ofertas disponibles
+	 * @return lista de ofertas disponibles
+	 */
+	public ArrayList<Oferta> getDisponibles(){
+		ArrayList<Oferta> ofertas = new ArrayList<Oferta>();
+		for(Inmueble i : this.inmuebles) {
+			ofertas.addAll(i.getDisponibles());
+		}
+		
+		return ofertas;
+	}
+	
+	
+	/**
 	 * Obtiene la lista de ofertas no aprobadas
 	 * @return lista de ofertas no aprobadas
 	 */
@@ -90,6 +103,67 @@ public class Sistema implements Serializable{
 			}
 		}
 		
+		return ofertas;
+	}
+	
+	/**
+	 * Busca ofertas entre dos fechas
+	 * @param f1 fecha 1
+	 * @param f2 fecha 2
+	 * @return ofertas entre esas fechas
+	 */
+	public ArrayList<Oferta> busquedaFecha(FechaSimulada f1, FechaSimulada f2){
+		ArrayList<Oferta> ofertas = getDisponibles();
+		
+		for(Oferta o : ofertas) {
+			if(o.getInicio().getHoy().isAfter(f1.getHoy()) && o.getInicio().getHoy().isBefore(f2.getHoy())) {
+				ofertas.add(o);
+			}
+		}
+		return ofertas;
+ 	}
+	
+	/**
+	 * Busca ofertas con un codigo postal
+	 * @param cp codigo postal
+	 * @return ofertas entre esas fechas
+	 */
+	public ArrayList<Oferta> busquedaCP(String cp){
+		ArrayList<Oferta> ofertas = new ArrayList<Oferta>();
+		
+		for(Inmueble i : this.inmuebles) {
+			if(i.getDireccion().getCP().equalsIgnoreCase(cp)) {
+				ofertas.addAll(i.getDisponibles());
+			}
+		}
+		return ofertas;
+ 	}
+	
+	/**
+	 * Devuelve las ofertas vacacionales
+	 * @return ofertas vacacionales
+	 */
+	public ArrayList<Oferta> busquedaVacacional(){
+		ArrayList<Oferta> ofertas = new ArrayList<Oferta>();
+		for(Oferta o : this.getDisponibles() ) {
+			if(o instanceof Vacacional) {
+				ofertas.add(o);
+			}
+		}
+		return ofertas;
+	}
+	
+	/**
+	 * Devuelve las ofertas de larga estancia
+	 * @return ofertas de larga estancia
+	 */
+	public ArrayList<Oferta> busquedaLE(){
+		ArrayList<Oferta> ofertas = new ArrayList<Oferta>();
+		for(Oferta o : this.getDisponibles() ) {
+			if(o instanceof LargaEstancia) {
+				ofertas.add(o);
+			}
+		}
 		return ofertas;
 	}
 	

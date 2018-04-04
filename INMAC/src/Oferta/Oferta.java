@@ -43,6 +43,7 @@ public abstract class Oferta implements Serializable{
 		return precio;
 	}
 	
+	
 	/** 
 	 * Obtiene la lista de valoraciones de la oferta
 	 * @return valoraciones

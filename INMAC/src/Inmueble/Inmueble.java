@@ -3,6 +3,7 @@ package Inmueble;
 import java.util.ArrayList;
 import java.util.List;
 
+import Oferta.EstadoOferta;
 import Oferta.Oferta;
 
 /**
@@ -46,6 +47,20 @@ public class Inmueble {
 	 * @return ofertas
 	 */
 	public ArrayList<Oferta> getOfertas() {
+		return ofertas;
+	}
+	
+	/**
+	 * Obtiene las ofertas disponibles
+	 * @return lista de ofertas disponibles
+	 */
+	public ArrayList<Oferta> getDisponibles(){
+		ArrayList<Oferta> ofertas = new ArrayList<Oferta>();
+		for(Oferta o : this.ofertas) {
+			if(o.getVisibilidad() == EstadoOferta.DISPONIBLE) {
+				ofertas.add(o);
+			}
+		}
 		return ofertas;
 	}
 
